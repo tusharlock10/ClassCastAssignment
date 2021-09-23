@@ -20,6 +20,8 @@ export const theme =
   Appearance.getColorScheme() === 'light' ? LightTheme : DarkTheme;
 
 export const fonts = {
-  heading: 'Raleway',
-  body: 'Roboto',
+  heading: 'Raleway-Regular',
+  headingBold: 'Raleway-Bold',
+  body: 'Montserrat-Regular',
+  bodyBold: 'Montserrat-Bold',
 };

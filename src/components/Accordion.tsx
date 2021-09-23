@@ -1,9 +1,11 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {theme, fonts} from '../theme';
 
+import Icon from 'react-native-vector-icons/Feather';
 interface Props {
   isOpen: boolean;
+  onPress: () => void;
   headingText: string;
   subHeadingText?: string;
 }
@@ -12,11 +14,26 @@ export const Accordion: React.FC<Props> = props => {
   return (
     <View style={styles.container}>
       <View style={styles.headingView}>
-        <Text style={styles.headingText}>{props.headingText}</Text>
-        <Text style={styles.subHeadingText}>{props.subHeadingText}</Text>
+        <View>
+          <Text style={styles.headingText}>{props.headingText}</Text>
+          {props.subHeadingText && (
+            <Text style={styles.subHeadingText}>{props.subHeadingText}</Text>
+          )}
+        </View>
+        <TouchableOpacity onPress={props.onPress}>
+          <Icon
+            name={props.isOpen ? 'chevron-down' : 'chevron-up'}
+            color={theme.heading}
+            size={28}
+          />
+        </TouchableOpacity>
       </View>
-      <View style={styles.separator} />
-      {props.children}
+      {props.isOpen ? (
+        <>
+          <View style={styles.separator} />
+          {props.children}
+        </>
+      ) : null}
     </View>
   );
 };
@@ -32,12 +49,12 @@ const styles = StyleSheet.create({
   headingView: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   headingText: {
     color: theme.heading,
-    fontFamily: fonts.body,
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontFamily: fonts.headingBold,
+    fontSize: 20,
   },
   subHeadingText: {
     color: theme.subHeading,
@@ -48,5 +65,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 1.5,
     backgroundColor: theme.background,
+    marginVertical: 5,
   },
 });

@@ -4,6 +4,8 @@ import {theme} from './theme';
 import {Accordion} from './components';
 
 const App: React.FC = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
   React.useEffect(() => {
     StatusBar.setBarStyle(theme.statusBarStyle);
     StatusBar.setBackgroundColor(theme.background);
@@ -11,7 +13,11 @@ const App: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Accordion isOpen={false} headingText={'hello'}>
+      <Accordion
+        onPress={() => setIsOpen(!isOpen)}
+        isOpen={isOpen}
+        headingText={'Linear Algebra'}
+        subHeadingText={'15 Tests'}>
         <Text>Do you see me?</Text>
       </Accordion>
     </View>
