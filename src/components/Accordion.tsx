@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import {theme, fonts} from '../theme';
-
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import {fonts, theme} from '../theme';
+
 interface Props {
   isOpen: boolean;
   onPress: () => void;
@@ -41,7 +41,7 @@ export const Accordion: React.FC<Props> = props => {
 const styles = StyleSheet.create({
   container: {
     borderRadius: 10,
-    elevation: 7,
+    elevation: 5,
     backgroundColor: theme.surface,
     paddingHorizontal: 15,
     paddingVertical: 10,
@@ -65,6 +65,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 1.5,
     backgroundColor: theme.background,
-    marginVertical: 5,
+    marginVertical: 15,
   },
 });
